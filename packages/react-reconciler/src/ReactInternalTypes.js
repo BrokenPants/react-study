@@ -168,9 +168,9 @@ export type Fiber = {
   lanes: Lanes,
   childLanes: Lanes,
 
-  // This is a pooled version of a Fiber. Every fiber that gets updated will
-  // eventually have a pair. There are cases when we can clean up pairs to save
-  // memory if we need to.
+  // 这是 Fiber 的池化版本。
+  // 每个被更新的 fiber 最终都会有一个配对。
+  // 有时我们可以清理配对以节省内存（如果需要的话）。
   alternate: Fiber | null,
 
   // Time spent rendering this Fiber and its descendants for the current update.

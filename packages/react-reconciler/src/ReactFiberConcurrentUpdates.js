@@ -92,22 +92,22 @@ function enqueueUpdate(
   update: ConcurrentUpdate | null,
   lane: Lane,
 ) {
-  // Don't update the `childLanes` on the return path yet. If we already in
-  // the middle of rendering, wait until after it has completed.
-  concurrentQueues[concurrentQueuesIndex++] = fiber;
-  concurrentQueues[concurrentQueuesIndex++] = queue;
-  concurrentQueues[concurrentQueuesIndex++] = update;
-  concurrentQueues[concurrentQueuesIndex++] = lane;
+  // 不要在返回路径上更新 `childLanes`。如果我们在渲染中间，等待渲染完成。
+  // 在渲染中间，等待渲染完成。
+  concurrentQueues[concurrentQueuesIndex++] = fiber; // 将 Fiber 添加到队列中
+  concurrentQueues[concurrentQueuesIndex++] = queue; // 将队列添加到队列中
+  concurrentQueues[concurrentQueuesIndex++] = update; // 将更新添加到队列中
+  concurrentQueues[concurrentQueuesIndex++] = lane; // 将 Lane 添加到队列中
 
-  concurrentlyUpdatedLanes = mergeLanes(concurrentlyUpdatedLanes, lane);
+  concurrentlyUpdatedLanes = mergeLanes(concurrentlyUpdatedLanes, lane); // 合并 Lane
 
-  // The fiber's `lane` field is used in some places to check if any work is
-  // scheduled, to perform an eager bailout, so we need to update it immediately.
-  // TODO: We should probably move this to the "shared" queue instead.
+  // Fiber 的 `lane` 字段用于在某些地方检查是否安排了工作，执行急切地跳出，所以我们需要立即更新它。
+  // 执行急切地跳出，所以我们需要立即更新它。
+  // TODO: 我们应该可能移动到 "shared" 队列 instead.
   fiber.lanes = mergeLanes(fiber.lanes, lane);
-  const alternate = fiber.alternate;
+  const alternate = fiber.alternate; // 获取 Fiber 的备用 Fiber
   if (alternate !== null) {
-    alternate.lanes = mergeLanes(alternate.lanes, lane);
+    alternate.lanes = mergeLanes(alternate.lanes, lane); // 合并 Lane
   }
 }
 

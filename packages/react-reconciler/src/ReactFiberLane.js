@@ -818,6 +818,7 @@ export function createLaneMap<T>(initial: T): LaneMap<T> {
 }
 
 export function markRootUpdated(root: FiberRoot, updateLane: Lane) {
+  // 将更新 Lane 添加到 pendingLanes 中
   root.pendingLanes |= updateLane;
   if (enableDefaultTransitionIndicator) {
     // Mark that this lane might need a loading indicator to be shown.

@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+
+# mermaid 输出规范
+
+删除所有注释，确保所有节点标签都用双引号包裹，并使用最基础的 graph TD 或者 graph LR 语法。

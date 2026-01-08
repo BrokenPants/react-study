@@ -359,9 +359,9 @@ export function updateContainer(
   parentComponent: ?component(...props: any),
   callback: ?Function,
 ): Lane {
-  const current = container.current;
-  const lane = requestUpdateLane(current);
-  updateContainerImpl(
+  const current = container.current; // 获取当前的 Fiber 树
+  const lane = requestUpdateLane(current); // 确定优先级
+  updateContainerImpl( // 更新容器，执行更新操作
     current,
     lane,
     element,
@@ -369,7 +369,7 @@ export function updateContainer(
     parentComponent,
     callback,
   );
-  return lane;
+  return lane; // 返回更新 Lane
 }
 
 export function updateContainerSync(
@@ -452,11 +452,11 @@ function updateContainerImpl(
     update.callback = callback;
   }
 
-  const root = enqueueUpdate(rootFiber, update, lane);
+  const root = enqueueUpdate(rootFiber, update, lane); // 将更新添加到队列中
   if (root !== null) {
-    startUpdateTimerByLane(lane, 'root.render()', null);
-    scheduleUpdateOnFiber(root, rootFiber, lane);
-    entangleTransitions(root, rootFiber, lane);
+    startUpdateTimerByLane(lane, 'root.render()', null); // 启动更新计时器
+    scheduleUpdateOnFiber(root, rootFiber, lane); // 调度更新
+    entangleTransitions(root, rootFiber, lane); // 纠缠过渡
   }
 }
 

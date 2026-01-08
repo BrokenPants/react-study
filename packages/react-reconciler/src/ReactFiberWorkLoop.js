@@ -1058,8 +1058,8 @@ export function scheduleInitialHydrationOnRoot(root: FiberRoot, lane: Lane) {
 }
 
 export function isUnsafeClassRenderPhaseUpdate(fiber: Fiber): boolean {
-  // Check if this is a render phase update. Only called by class components,
-  // which special (deprecated) behavior for UNSAFE_componentWillReceive props.
+  // 检查这是否是渲染阶段的更新。仅被类组件调用，
+  // 用于 UNSAFE_componentWillReceiveProps 的特殊（已弃用）行为。
   return (executionContext & RenderContext) !== NoContext;
 }
 

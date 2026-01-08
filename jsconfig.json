@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "checkJs": false,
+    "allowJs": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "**/__tests__/**",
+    "**/__mocks__/**",
+    "packages/**/*.js"
+  ],
+  "include": []
+}
+
