@@ -2,6 +2,9 @@
 alwaysApply: true
 ---
 
-# mermaid 输出规范
-
-删除所有注释，确保所有节点标签都用双引号包裹，并使用最基础的 graph TD 或者 graph LR 语法。
+# 图表规范
+使用 Mermaid 语法生成一个流程图，确保：
+1. 使用 flowchart TD 或 graph TD 作为图表类型
+2. 所有节点都有明确的标识符
+3. 箭头语法正确（使用 --> 或 ->>）
+4. 代码块用 ```mermaid 包裹"
